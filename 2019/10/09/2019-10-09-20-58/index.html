@@ -6,22 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>leetcode_236_二叉树的最近公共祖先 | adog的博客</title>
+  <title>Java中的finally代码块中的代码不一定会一定执行 | adog的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="题目描述：给定一个二叉树, 找到该树中两个指定节点的最近公共祖先。 百度百科中最近公共祖先的定义为：“对于有根树 T 的两个结点 p、q，最近公共祖先表示为一个结点 x，满足 x 是 p、q 的祖先且 x 的深度尽可能大（一个节点也可以是它自己的祖先）。”">
-<meta name="keywords" content="leetcode,leetcode_medium">
+  <meta name="description" content="finally代码块中的代码一定会执行吗？所有主线程终止时，守护线程会突然终止。这种情况下守护线程中的finally代码块可能不会被执行。这只是一种情况，但这种情况可能听说过的人不是很多，所以记录下来。">
+<meta name="keywords" content="Java">
 <meta property="og:type" content="article">
-<meta property="og:title" content="leetcode_236_二叉树的最近公共祖先">
-<meta property="og:url" content="http://yoursite.com/2019/09/01/2019-09-01-22-05/index.html">
+<meta property="og:title" content="Java中的finally代码块中的代码不一定会一定执行">
+<meta property="og:url" content="http://yoursite.com/2019/10/09/2019-10-09-20-58/index.html">
 <meta property="og:site_name" content="adog的博客">
-<meta property="og:description" content="题目描述：给定一个二叉树, 找到该树中两个指定节点的最近公共祖先。 百度百科中最近公共祖先的定义为：“对于有根树 T 的两个结点 p、q，最近公共祖先表示为一个结点 x，满足 x 是 p、q 的祖先且 x 的深度尽可能大（一个节点也可以是它自己的祖先）。”">
+<meta property="og:description" content="finally代码块中的代码一定会执行吗？所有主线程终止时，守护线程会突然终止。这种情况下守护线程中的finally代码块可能不会被执行。这只是一种情况，但这种情况可能听说过的人不是很多，所以记录下来。">
 <meta property="og:locale" content="default">
-<meta property="og:image" content="https://raw.githubusercontent.com/adogzZ/adogzZ.github.io/master/photos/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/binarytree.png">
-<meta property="og:updated_time" content="2019-09-02T01:51:44.413Z">
+<meta property="og:updated_time" content="2019-10-09T13:05:51.377Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="leetcode_236_二叉树的最近公共祖先">
-<meta name="twitter:description" content="题目描述：给定一个二叉树, 找到该树中两个指定节点的最近公共祖先。 百度百科中最近公共祖先的定义为：“对于有根树 T 的两个结点 p、q，最近公共祖先表示为一个结点 x，满足 x 是 p、q 的祖先且 x 的深度尽可能大（一个节点也可以是它自己的祖先）。”">
-<meta name="twitter:image" content="https://raw.githubusercontent.com/adogzZ/adogzZ.github.io/master/photos/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/binarytree.png">
+<meta name="twitter:title" content="Java中的finally代码块中的代码不一定会一定执行">
+<meta name="twitter:description" content="finally代码块中的代码一定会执行吗？所有主线程终止时，守护线程会突然终止。这种情况下守护线程中的finally代码块可能不会被执行。这只是一种情况，但这种情况可能听说过的人不是很多，所以记录下来。">
   
     <link rel="alternative" href="/atom.xml" title="adog的博客" type="application/atom+xml">
   
@@ -169,35 +167,29 @@ var _hmt = _hmt || [];
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-2019-09-01-22-05" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-2019-10-09-20-58" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      leetcode_236_二叉树的最近公共祖先
+      Java中的finally代码块中的代码不一定会一定执行
     </h1>
   
 
         
-        <a href="/2019/09/01/2019-09-01-22-05/" class="archive-article-date">
-  	<time datetime="2019-09-01T14:06:04.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-01</time>
+        <a href="/2019/10/09/2019-10-09-20-58/" class="archive-article-date">
+  	<time datetime="2019-10-09T12:58:33.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-10-09</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="题目描述："><a href="#题目描述：" class="headerlink" title="题目描述："></a>题目描述：</h3><p>给定一个二叉树, 找到该树中两个指定节点的最近公共祖先。</p>
-<p>百度百科中最近公共祖先的定义为：“对于有根树 T 的两个结点 p、q，最近公共祖先表示为一个结点 x，满足 x 是 p、q 的祖先且 x 的深度尽可能大（一个节点也可以是它自己的祖先）。”</p>
-<p><img src="https://raw.githubusercontent.com/adogzZ/adogzZ.github.io/master/photos/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/binarytree.png" alt="binarytree"></p>
+        <h3 id="finally代码块中的代码一定会执行吗？"><a href="#finally代码块中的代码一定会执行吗？" class="headerlink" title="finally代码块中的代码一定会执行吗？"></a>finally代码块中的代码一定会执行吗？</h3><p>所有主线程终止时，守护线程会突然终止。这种情况下守护线程中的finally代码块可能不会被执行。这只是一种情况，但这种情况可能听说过的人不是很多，所以记录下来。</p>
 <a id="more"></a>
-<h3 id="示例："><a href="#示例：" class="headerlink" title="示例："></a>示例：</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入: root = [3,5,1,6,2,0,8,null,null,7,4], p = 5, q = 1</span><br><span class="line">输出: 3</span><br></pre></td></tr></table></figure>
-<p>说明：<br><code>所有节点的值都是唯一的。</code><br><code>p、q 为不同节点且均存在于给定的二叉树中。</code></p>
-<h3 id="思路："><a href="#思路：" class="headerlink" title="思路："></a>思路：</h3><p>记录从根节点到两个指定节点的路径，返回最后出现的相同节点</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">    </span><br><span class="line">    //表示是否已经找到了节点</span><br><span class="line">    int finish = 0;</span><br><span class="line">    </span><br><span class="line">    public TreeNode lowestCommonAncestor(TreeNode root,TreeNode p,TreeNode q)&#123;</span><br><span class="line">        TreeNode result = root;</span><br><span class="line">        int i = 0;</span><br><span class="line">        List&lt;TreeNode&gt; p_path = new ArrayList&lt;&gt;();</span><br><span class="line">        List&lt;TreeNode&gt; q_path = new ArrayList&lt;&gt;();</span><br><span class="line">        preOrder(root,p,p_path);</span><br><span class="line">        finish = 0;</span><br><span class="line">        preOrder(root,q,q_path);</span><br><span class="line">        while(i &lt; p_path.size() &amp;&amp; i &lt; q_path.size())&#123;</span><br><span class="line">            if(p_path.get(i) == q_path.get(i))&#123;</span><br><span class="line">                result = p_path.get(i);</span><br><span class="line">            &#125;</span><br><span class="line">            i ++;</span><br><span class="line">        &#125;</span><br><span class="line">        return result;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    public void preOrder(TreeNode node,TreeNode search,List&lt;TreeNode&gt; path)&#123;</span><br><span class="line">        if(node == null || finish == 1)&#123;</span><br><span class="line">            return;</span><br><span class="line">        &#125;</span><br><span class="line">        path.add(node);</span><br><span class="line">        if(node.val == search.val)&#123;</span><br><span class="line">            finish = 1;</span><br><span class="line">        &#125;</span><br><span class="line">        preOrder(node.left,search,path);</span><br><span class="line">        preOrder(node.right,search,path);</span><br><span class="line">        //如果找到了,回溯的时候就不需要回到上一个状态了</span><br><span class="line">        if(finish == 0)&#123;</span><br><span class="line">            path.remove(path.size() - 1);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><code>执行用时 :22 ms, 在所有 Java 提交中击败了17.56%的用户</code><br><code>内存消耗 :38.8 MB, 在所有 Java 提交中击败了9.53%的用户</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">package demo;</span><br><span class="line"></span><br><span class="line">public class Demo &#123;</span><br><span class="line"></span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        Thread t1 = new Thread(new Runnable() &#123;</span><br><span class="line">            @Override</span><br><span class="line">            public void run() &#123;</span><br><span class="line">                try &#123;</span><br><span class="line">                    System.out.println(&quot;我是try&quot;);</span><br><span class="line">                    Thread.sleep(5000);</span><br><span class="line">                &#125; catch (Exception e) &#123;</span><br><span class="line">                &#125;finally&#123;</span><br><span class="line">                    System.out.println(&quot;我是一定会执行的代码？&quot;);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line">        t1.setDaemon(true);//设置t1为后台线程</span><br><span class="line">        t1.start();</span><br><span class="line">        try &#123;</span><br><span class="line">            Thread.sleep(5);</span><br><span class="line">        &#125; catch (InterruptedException e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">        System.out.println(&quot;我是主线程中的代码,主线程是非后台线程。&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
       
 
@@ -211,11 +203,7 @@ var _hmt = _hmt || [];
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">leetcode</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">leetcode_medium</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Java</a>
         		</li>
       		
 		</ul>
@@ -271,7 +259,7 @@ var _hmt = _hmt || [];
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/09/01/2019-09-01-22-05/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/10/09/2019-10-09-20-58/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -285,18 +273,9 @@ var _hmt = _hmt || [];
   
 <nav id="article-nav">
   
-    <a href="/2019/09/02/2019-09-02-13-09/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          leetcode_207_课程表
-        
-      </div>
-    </a>
   
-  
-    <a href="/2019/08/31/2019-08-31_21_19/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">leetcode_165_比较版本号</div>
+    <a href="/2019/09/02/2019-09-02-21-21/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">leetcode_449_序列化和反序列化二叉搜索树</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -335,7 +314,7 @@ var _hmt = _hmt || [];
 <script src="https://jjeejj.github.io/js/gitment.js"></script>
 <script>
 var gitment = new Gitment({
-  id: "http://yoursite.com/2019/09/01/2019-09-01-22-05/",
+  id: "http://yoursite.com/2019/10/09/2019-10-09-20-58/",
   owner: 'adogzZ',
   repo: 'adogzZ.github.io',
   oauth: {
