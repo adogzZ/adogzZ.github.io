@@ -213,49 +213,9 @@ var _hmt = _hmt || [];
 <ul>
 <li>监听通知机制</li>
 </ul>
-<p>客户端注册监听它关心的任意节点，或者目录节点及递归子目录节点 </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">1. 如果注册的是对某个节点的监听，则当这个节点被删除，或者被修改时，对应的客户端将被通知。</span><br><span class="line">2. 如果注册的是对某个目录的监听，则当这个目录有子节点被创建，或者有子节点被删除，对应的客户端将被通知。</span><br><span class="line">3. 如果注册的是对某个目录的递归子节点进行监听，则当这个目录下面的任意子节点有目录结构的变化（有子节点被创建，或被删除）或者根节点有数据变化时，对应的客户端将被通知。</span><br></pre></td></tr></table></figure>
-<p>所有的通知都是一次性的，即无论是对节点还是对目录进行的监听，一旦触发，对应的监听即被移除。递归子节点，监听是对所有子节点的，所以，每个子节点下面的事件同样只会被触发一次。</p>
-<h2 id="事件监听机制"><a href="#事件监听机制" class="headerlink" title="事件监听机制"></a>事件监听机制</h2><ul>
-<li>针对节点的监听：</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">get  -w  /path   // 注册监听的同时获取数据</span><br><span class="line">stat -w /path   // 对节点进行监听，且获取元数据信息</span><br></pre></td></tr></table></figure>
-<ul>
-<li>针对目录的监听：</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ls -w /path</span><br></pre></td></tr></table></figure>
-<ul>
-<li>针对递归子目录的监听</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ls -R -w /path ： -R 区分大小写，一定用大写</span><br></pre></td></tr></table></figure>
-<ul>
-<li>Zookeeper事件类型</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">None: 连接建立事件</span><br><span class="line">NodeCreated: 节点创建事件</span><br><span class="line">NodeDeleted: 节点删除事件</span><br><span class="line">NodeDataChanged: 节点数据变化</span><br><span class="line">NodeChildrenChanged: 子节点列表变化</span><br><span class="line">DataWatchRemoved: 节点监听被移除</span><br><span class="line">ChildWatchRemoved: 子节点监听被移除</span><br></pre></td></tr></table></figure>
-<h2 id="Zookeeper集群模式"><a href="#Zookeeper集群模式" class="headerlink" title="Zookeeper集群模式"></a>Zookeeper集群模式</h2><ul>
-<li>Zookeeper集群模式一共有三种类型的角色</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Leader: 处理所有的事务请求（写请求），可以处理读请求，集群中只能有一个Leader。</span><br><span class="line">Follower: 只能处理读请求，同时作为 Leader的候选节点，即如果Leader宕机，Follower节点要参与到新的Leader选举中，有可能成为新的Leader节点。</span><br><span class="line">Observer: 只能处理读请求。不能参与选举。</span><br></pre></td></tr></table></figure>
-<p><img src="https://note.youdao.com/yws/public/resource/4b98050e193ba49f993268891f1a607e/xmlnote/65C72B1B128840A1A09DD480905836D5/26582" alt="img"></p>
-<h2 id="Zookeeper典型使用场景"><a href="#Zookeeper典型使用场景" class="headerlink" title="Zookeeper典型使用场景"></a>Zookeeper典型使用场景</h2><ul>
-<li>Zookeeper 实现非公平锁  </li>
-</ul>
-<p><img src="https://note.youdao.com/yws/public/resource/80d7bcb710a0e21616248239b9dfd40d/xmlnote/5ABBCAE8489D467DB068B271E572D8C4/26596" alt="img"></p>
-<p>如上实现方式在并发问题比较严重的情况下，性能会下降的比较厉害，主要原因是，所有的连接都在对同一个节点进行监听，当服务器检测到删除事件时，要通知所有的连接，所有的连接同时收到事件，再次并发竞争，这就是<strong>羊群效应</strong>。这种加锁方式是<strong>非公平锁</strong>的具体实现：如何避免呢，我们看下面这种方式。</p>
-<ul>
-<li>Zookeeper 实现公平锁  </li>
-</ul>
-<p><img src="https://note.youdao.com/yws/public/resource/80d7bcb710a0e21616248239b9dfd40d/xmlnote/CBFD45FBFBE74A3A8B5E17F09D4BD838/26594" alt="img"></p>
-<ul>
-<li>Zookeeper 实现共享锁</li>
-</ul>
-<p><img src="https://note.youdao.com/yws/public/resource/80d7bcb710a0e21616248239b9dfd40d/xmlnote/0548B5F80E2A41C789C60B12964C1103/26598" alt="img"></p>
-<ul>
-<li>Zookeeper实现注册中心</li>
-</ul>
-<p><img src="https://note.youdao.com/yws/public/resource/80d7bcb710a0e21616248239b9dfd40d/xmlnote/84B6F46B7BA34BC790E1AFBB89FB4CB6/26436" alt="img"></p>
-<h2 id="Zookeeper选举leader流程"><a href="#Zookeeper选举leader流程" class="headerlink" title="Zookeeper选举leader流程"></a>Zookeeper选举leader流程</h2><p><img src="https://note.youdao.com/yws/public/resource/dfa894cfaf0fde76405dd205dc1d1b47/xmlnote/352511ABF0754102B1F243B484CB1BB7/104111" alt="img"></p>
-
+        
+          <a class="article-more-a" href="/2021/02/11/2021-02-11-10-18/#more">more >></a>
+        
       
 
       
@@ -332,103 +292,10 @@ var _hmt = _hmt || [];
 <li>redis的单线程主要是指redis的网络io和键值对的读写，底层使用的是Linux操作系统的epoll模型，跟nio的单线程模型类似。</li>
 <li>redis利用的是操作系统的epoll模型来实现的io多路复用，所以即使单线程也可以处理多并发的客户端连接。</li>
 </ul>
-<h2 id="redis执行set命令出现错误"><a href="#redis执行set命令出现错误" class="headerlink" title="redis执行set命令出现错误"></a>redis执行set命令出现错误</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">错误提示：MISCONF Redis is configured to save RDB snapshots, but it is currently not able to persist on disk. Commands that may modify the data set are disabled, because this instance is configured to report errors during writes if RDB snapshotting fails (stop-writes-on-bgsave-error option). Please check the Redis logs for details about the RDB error.</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">解决方案：127.0.0.1:6379&gt; config set stop-writes-on-bgsave-error no</span><br></pre></td></tr></table></figure>
-<h2 id="redis集群架构"><a href="#redis集群架构" class="headerlink" title="redis集群架构"></a>redis集群架构</h2><p><img src="C:\Users\adog\AppData\Roaming\Typora\typora-user-images\1612769383532.png" alt="1612769383532"></p>
-<h2 id="redis持久化"><a href="#redis持久化" class="headerlink" title="redis持久化"></a>redis持久化</h2><ul>
-<li>RDB快照：默认情况下，redis将内存数据快照保存在dump.rdb文件中</li>
-<li>save与bgsave(写时复制，copy-on-write机制)对比</li>
-</ul>
-<table>
-<thead>
-<tr>
-<th><strong>命令</strong></th>
-<th><strong>save</strong></th>
-<th style="text-align:center"><strong>bgsave</strong></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>IO类型</td>
-<td>同步</td>
-<td style="text-align:center">异步</td>
-</tr>
-<tr>
-<td>是否阻塞redis其它命令</td>
-<td>是</td>
-<td style="text-align:center">否(在生成子进程执行调用fork函数时会有短暂阻塞)</td>
-</tr>
-<tr>
-<td>复杂度</td>
-<td>O(n)</td>
-<td style="text-align:center">O(n)</td>
-</tr>
-<tr>
-<td>优点</td>
-<td>不会消耗额外内存</td>
-<td style="text-align:center">不阻塞客户端命令</td>
-</tr>
-<tr>
-<td>缺点</td>
-<td>阻塞客户端命令</td>
-<td style="text-align:center">需要fork子进程，消耗内存</td>
-</tr>
-</tbody>
-</table>
-<ul>
-<li>AOF：RDB快照持久化并不是非常安全， 如果 Redis 因为某些原因而造成故障停机， 那么服务器将丢失最近写入、且仍未保存到快照中的那些数据。</li>
-<li>AOF 持久化，将修改的每一条指令记录进文件appendonly.aof中(先写入os cache，每隔一段时间fsync到磁盘)</li>
-<li>你可以配置 Redis 多久才将数据 fsync 到磁盘一次。</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">appendfsync always：每次有新命令追加到 AOF 文件时就执行一次 fsync ，非常慢，也非常安全。</span><br><span class="line">appendfsync everysec：每秒 fsync 一次，足够快，并且在故障时只会丢失 1 秒钟的数据。</span><br><span class="line">appendfsync no：从不 fsync ，将数据交给操作系统来处理。更快，也更不安全的选择。</span><br></pre></td></tr></table></figure>
-<ul>
-<li>AOF重写：AOF文件里可能有太多没用的指令，所以AOF会定期根据内存的最新数据重写aof文件</li>
-<li>如下两个配置可以控制AOF自动重写的频率</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># auto-aof-rewrite-min-size 64mb   //aof文件至少要达到64M才会自动重写，文件太小恢复速度本来就很快，重写的意义不大</span><br><span class="line"># auto-aof-rewrite-percentage 100  //aof文件自上一次重写后文件大小增长了100%则再次触发重写</span><br></pre></td></tr></table></figure>
-<ul>
-<li>redis 4.0混合持久化：如果开启了混合持久化，AOF在重写时，不再是单纯将内存数据转换为RESP命令写入AOF文件，而是将重写这一刻之前的内存数据做RDB快照处理，并且将RDB快照内容和增量的AOF修改内存数据的命令存在一起，都写入新的AOF文件。混合持久化AOF文件结构如下：</li>
-</ul>
-<p><img src="https://note.youdao.com/yws/public/resource/893c138fa39925f86b374fd46db322b4/xmlnote/9EFFDA379EF5449590D6FABD49217A22/102679" alt="img"></p>
-<h2 id="redis主从架构"><a href="#redis主从架构" class="headerlink" title="redis主从架构"></a>redis主从架构</h2><p><img src="https://note.youdao.com/yws/public/resource/893c138fa39925f86b374fd46db322b4/xmlnote/A9E44D01800B46789EA18723EC1F5D12/80584" alt="img"></p>
-<ul>
-<li>redis主从架构搭建，配置从节点的步骤</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">1、复制一份redis.conf文件为redis_6380.conf文件</span><br><span class="line"></span><br><span class="line">2、将配置文件中的相关配置修改为如下值：</span><br><span class="line">port 6380</span><br><span class="line">pidfile /var/run/redis_6380.pid  # 把pid进程号写入pidfile配置的文件</span><br><span class="line">logfile &quot;6380.log&quot;</span><br><span class="line">dir /usr/local/redis-5.0.3/data/6380  # 指定数据存放目录，注意数据存放目录一定要事先创建！</span><br><span class="line"></span><br><span class="line">3、配置主从复制</span><br><span class="line">replicaof 192.168.1.3 6379   # 从本机6379的redis实例复制数据，Redis 5.0之前使用slaveof</span><br><span class="line">replica-read-only yes  # 配置从节点只读</span><br><span class="line"></span><br><span class="line">4、启动从节点</span><br><span class="line">src/redis-server redis_6380.conf</span><br><span class="line"></span><br><span class="line">5、连接从节点</span><br><span class="line">redis-cli -p 6380</span><br><span class="line"></span><br><span class="line">6、测试在6379实例上写数据，6380实例是否能及时同步新修改的数据</span><br><span class="line"></span><br><span class="line">7、可以自己再配置一个6381的从节点</span><br></pre></td></tr></table></figure>
-<h2 id="redis主从工作原理"><a href="#redis主从工作原理" class="headerlink" title="redis主从工作原理"></a>redis主从工作原理</h2><ul>
-<li>主从复制(全量复制)：</li>
-</ul>
-<p><img src="https://note.youdao.com/yws/public/resource/893c138fa39925f86b374fd46db322b4/xmlnote/118420F78758401C87B43E694A64B290/102424" alt="img"></p>
-<ul>
-<li>主从复制(部分复制，断点续传)：</li>
-</ul>
-<p><img src="https://note.youdao.com/yws/public/resource/893c138fa39925f86b374fd46db322b4/xmlnote/D08B9F88D6AA4030A9C8A3C7FF0EEF37/102426" alt="img"></p>
-<h2 id="redis哨兵架构"><a href="#redis哨兵架构" class="headerlink" title="redis哨兵架构"></a>redis哨兵架构</h2><p><img src="https://note.youdao.com/yws/public/resource/893c138fa39925f86b374fd46db322b4/xmlnote/7D3DDD5D61CC4C66A1C4850C30A7AC34/80634" alt="img"></p>
-<p>sentinel哨兵是特殊的redis服务，不提供读写服务，主要用来监控redis实例节点。哨兵架构下client客户端第一次从哨兵找出redis的主节点，后续就直接访问redis的主节点，不会每次都通过sentinel代理访问redis的主节点，当redis的主节点发生变化，哨兵会第一时间感知到，并且将新的redis主节点通知给client客户端。</p>
-<ul>
-<li>redis哨兵架构搭建步骤：</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">1、复制一份sentinel.conf文件</span><br><span class="line">cp sentinel.conf sentinel-26379.conf</span><br><span class="line"></span><br><span class="line">2、将相关配置修改为如下值：</span><br><span class="line">port 26379</span><br><span class="line">daemonize yes</span><br><span class="line">pidfile &quot;/var/run/redis-sentinel-26379.pid&quot;</span><br><span class="line">logfile &quot;26379.log&quot;</span><br><span class="line">dir &quot;/usr/local/redis-5.0.3/data&quot;</span><br><span class="line"># sentinel monitor &lt;master-redis-name&gt; &lt;master-redis-ip&gt; &lt;master-redis-port&gt; &lt;quorum&gt;</span><br><span class="line"># quorum是一个数字，指明当有多少个sentinel认为一个master失效时(值一般为：sentinel总数/2 + 1)，master才算真正失效</span><br><span class="line">sentinel monitor mymaster 192.168.0.60 6379 2   # mymaster这个名字随便取，客户端访问时会用到</span><br><span class="line"></span><br><span class="line">3、启动sentinel哨兵实例</span><br><span class="line">src/redis-sentinel sentinel-26379.conf</span><br><span class="line"></span><br><span class="line">4、查看sentinel的info信息</span><br><span class="line">src/redis-cli -p 26379</span><br><span class="line">127.0.0.1:26379&gt;info</span><br><span class="line">可以看到Sentinel的info里已经识别出了redis的主从</span><br><span class="line"></span><br><span class="line">5、可以自己再配置两个sentinel，端口26380和26381，注意上述配置文件里的对应数字都要修改</span><br></pre></td></tr></table></figure>
-<h2 id="redis高可用集群"><a href="#redis高可用集群" class="headerlink" title="redis高可用集群"></a>redis高可用集群</h2><p><img src="https://note.youdao.com/yws/public/resource/218d9ba28237a441217d0e024d410769/xmlnote/634BD113FECA429AAE20B2A22399C06B/101610" alt="img"></p>
-<ul>
-<li>redis集群搭建</li>
-</ul>
-<p>redis集群需要至少三个master节点，redis集群的搭建步骤如下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line">第一步：在第一台机器的/usr/local下创建文件夹redis-cluster，然后在其下面分别创建2个文件夾如下</span><br><span class="line">（1）mkdir -p /usr/local/redis-cluster</span><br><span class="line">（2）mkdir 8001 8004</span><br><span class="line"></span><br><span class="line">第一步：把之前的redis.conf配置文件copy到8001下，修改如下内容：</span><br><span class="line">（1）daemonize yes</span><br><span class="line">（2）port 8001（分别对每个机器的端口号进行设置）</span><br><span class="line">（3）pidfile /var/run/redis_8001.pid  # 把pid进程号写入pidfile配置的文件</span><br><span class="line">（4）dir /usr/local/redis-cluster/8001/（指定数据文件存放位置，必须要指定不同的目录位置，不然会丢失数据）</span><br><span class="line">（5）cluster-enabled yes（启动集群模式）</span><br><span class="line">（6）cluster-config-file nodes-8001.conf（集群节点信息文件，这里800x最好和port对应上）</span><br><span class="line">（7）cluster-node-timeout 10000</span><br><span class="line"> (8)# bind 127.0.0.1（bind绑定的是自己机器网卡的ip，如果有多块网卡可以配多个ip，代表允许客户端通过机器的哪些网卡ip去访问，内网一般可以不配置bind，注释掉即可）</span><br><span class="line"> (9)protected-mode  no   （关闭保护模式）</span><br><span class="line"> (10)appendonly yes</span><br><span class="line">如果要设置密码需要增加如下配置：</span><br><span class="line"> (11)requirepass zhuge     (设置redis访问密码)</span><br><span class="line"> (12)masterauth zhuge      (设置集群节点间访问密码，跟上面一致)</span><br><span class="line"></span><br><span class="line">第三步：把修改后的配置文件，copy到8004，修改第2、3、4、6项里的端口号，可以用批量替换：</span><br><span class="line">:%s/源字符串/目的字符串/g </span><br><span class="line"></span><br><span class="line">第四步：另外两台机器也需要做上面几步操作，第二台机器用8002和8005，第三台机器用8003和8006</span><br><span class="line"></span><br><span class="line">第五步：分别启动6个redis实例，然后检查是否启动成功</span><br><span class="line">（1）/usr/local/redis-5.0.3/src/redis-server /usr/local/redis-cluster/800*/redis.conf</span><br><span class="line">（2）ps -ef | grep redis 查看是否启动成功</span><br><span class="line">    </span><br><span class="line">第六步：用redis-cli创建整个redis集群(redis5以前的版本集群是依靠ruby脚本redis-trib.rb实现)</span><br><span class="line"># 下面命令里的1代表为每个创建的主服务器节点创建一个从服务器节点</span><br><span class="line"># 执行这条命令需要确认三台机器之间的redis实例要能相互访问，可以先简单把所有机器防火墙关掉，如果不关闭防火墙则需要打开redis服务端口和集群节点gossip通信端口16379(默认是在redis端口号上加1W)</span><br><span class="line"># 关闭防火墙</span><br><span class="line"># systemctl stop firewalld # 临时关闭防火墙</span><br><span class="line"># systemctl disable firewalld # 禁止开机启动</span><br><span class="line"># 注意：下面这条创建集群的命令大家不要直接复制，里面的空格编码可能有问题导致创建集群不成功</span><br><span class="line">（1）/usr/local/redis-5.0.3/src/redis-cli -a zhuge --cluster create --cluster-replicas 1 192.168.0.61:8001 192.168.0.62:8002 192.168.0.63:8003 192.168.0.61:8004 192.168.0.62:8005 192.168.0.63:8006 </span><br><span class="line"></span><br><span class="line">第七步：验证集群：</span><br><span class="line">（1）连接任意一个客户端即可：./redis-cli -c -h -p (-a访问服务端密码，-c表示集群模式，指定ip地址和端口号）</span><br><span class="line">    如：/usr/local/redis-5.0.3/src/redis-cli -a zhuge -c -h 192.168.0.61 -p 800*</span><br><span class="line">（2）进行验证： cluster info（查看集群信息）、cluster nodes（查看节点列表）</span><br><span class="line">（3）进行数据操作验证</span><br><span class="line">（4）关闭集群则需要逐个进行关闭，使用命令：</span><br><span class="line">/usr/local/redis-5.0.3/src/redis-cli -a zhuge -c -h 192.168.0.60 -p 800* shutdown</span><br></pre></td></tr></table></figure>
-<h2 id="redis集群选举"><a href="#redis集群选举" class="headerlink" title="redis集群选举"></a>redis集群选举</h2><ol>
-<li>slave发现自己的master变为FAIL。(在cluster-node-timeout时间内没有收到主节点的gossip消息)</li>
-<li>将自己记录的集群currentEpoch(集群选举周期)加1，并广播FAILOVER_AUTH_REQUEST 信息。</li>
-<li>其他节点收到该信息，只有master响应，判断请求者的合法性，并发送FAILOVER_AUTH_ACK，对每一个选举周期epoch只发送一次ack。</li>
-<li>尝试failover的slave收集master返回的FAILOVER_AUTH_ACK。</li>
-<li>slave收到超过半数master的ack后变成新Master。(这里解释了集群为什么至少需要三个主节点，如果只有两个，当其中一个挂了，只剩一个主节点是不能选举成功的)</li>
-<li>slave广播Pong消息通知其他集群节点。</li>
-<li>从节点并不是在主节点一进入 FAIL 状态就马上尝试发起选举，而是有一定的延迟，slave如果立即尝试选举可能会产生多个从节点收到相同票数的问题。延迟计算公式：</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">DELAY = 500ms + random(0 ~ 500ms) + SLAVE_RANK * 1000ms</span><br><span class="line">SLAVE_RANK表示此slave已经从master复制数据的总量的rank。Rank越小代表已复制的数据越新。这种方式下，持有最新数据的slave将会首先发起选举（理论上）。</span><br></pre></td></tr></table></figure>
-<h2 id="redis集群脑裂数据丢失问题"><a href="#redis集群脑裂数据丢失问题" class="headerlink" title="redis集群脑裂数据丢失问题"></a>redis集群脑裂数据丢失问题</h2><p>假如一个集群有三个主节点，每个主节点有2个从节点。脑裂问题是因为，当主节点与从节点断开连接时，集群需要进行重新选举，在重新选举的过程中，客户端很有可能继续往之前的那个主节点写入大量的数据。当选举出新的主节点，而之前的主节点又重新加入到集群成为新的主节点的从节点时，需要从主节点同步数据，而旧的主节点在选举过程中写入的数据就会被覆盖掉，从而导致数据丢失。规避方法：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">min-replicas-to-write 1  //写数据成功最少同步的slave数量，这个数量可以模仿大于半数机制配置，比如集群总共三个节点可以配置1，加上leader就是2，超过了半数。只有超过半数的节点都同步数据成功才会告诉客户端数据同步成功。</span><br></pre></td></tr></table></figure>
-<h2 id="多级缓存架构"><a href="#多级缓存架构" class="headerlink" title="多级缓存架构"></a>多级缓存架构</h2><p><img src="https://note.youdao.com/yws/public/resource/7b6df00d88f1554d79b2d688c23148a2/xmlnote/0E66B6FC979C49A9AE9F2AB4D54C9F64/80946" alt="img"></p>
-
+<h2 id="redis执行set命令出现错误"><a href="#redis执行set命令出现错误" class="headerlink" title="redis执行set命令出现错误"></a>redis执行set命令出现错误</h2>
+        
+          <a class="article-more-a" href="/2021/02/08/2021-02-08-09-30/#more">more >></a>
+        
       
 
       
@@ -1076,11 +943,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">zookeeper</a>
+                <a href="javascript:void(0)" class="js-tag color5">Java</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Java</a>
+                <a href="javascript:void(0)" class="js-tag color5">zookeeper</a>
               </li>
              
               <li class="article-tag-list-item">

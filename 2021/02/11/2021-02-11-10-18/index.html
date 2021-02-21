@@ -24,7 +24,7 @@
 <meta property="og:image" content="https://note.youdao.com/yws/public/resource/80d7bcb710a0e21616248239b9dfd40d/xmlnote/0548B5F80E2A41C789C60B12964C1103/26598">
 <meta property="og:image" content="https://note.youdao.com/yws/public/resource/80d7bcb710a0e21616248239b9dfd40d/xmlnote/84B6F46B7BA34BC790E1AFBB89FB4CB6/26436">
 <meta property="og:image" content="https://note.youdao.com/yws/public/resource/dfa894cfaf0fde76405dd205dc1d1b47/xmlnote/352511ABF0754102B1F243B484CB1BB7/104111">
-<meta property="og:updated_time" content="2021-02-20T07:21:34.050Z">
+<meta property="og:updated_time" content="2021-02-21T02:04:46.547Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Zookeeper">
 <meta name="twitter:description" content="Zookeeper的两个核心概念：文件系统数据结构+监听通知机制 文件系统数据结构    六种类型的znode目录节点：   PERSISTENT - 持久化目录节点： 客户端与zookeeper断开连接后，该节点依旧存在，只要不手动删除该节点，他将永远存在。  PERSISTENT_SEQUENTIAL - 持久化顺序编号目录节点 客户端与zookeeper断开连接后，该节点依旧存在，只是Zoo">
@@ -225,6 +225,7 @@ var _hmt = _hmt || [];
 <ul>
 <li>监听通知机制</li>
 </ul>
+<a id="more"></a>
 <p>客户端注册监听它关心的任意节点，或者目录节点及递归子目录节点 </p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">1. 如果注册的是对某个节点的监听，则当这个节点被删除，或者被修改时，对应的客户端将被通知。</span><br><span class="line">2. 如果注册的是对某个目录的监听，则当这个目录有子节点被创建，或者有子节点被删除，对应的客户端将被通知。</span><br><span class="line">3. 如果注册的是对某个目录的递归子节点进行监听，则当这个目录下面的任意子节点有目录结构的变化（有子节点被创建，或被删除）或者根节点有数据变化时，对应的客户端将被通知。</span><br></pre></td></tr></table></figure>
 <p>所有的通知都是一次性的，即无论是对节点还是对目录进行的监听，一旦触发，对应的监听即被移除。递归子节点，监听是对所有子节点的，所以，每个子节点下面的事件同样只会被触发一次。</p>
@@ -507,11 +508,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">zookeeper</a>
+                <a href="javascript:void(0)" class="js-tag color5">Java</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Java</a>
+                <a href="javascript:void(0)" class="js-tag color5">zookeeper</a>
               </li>
              
               <li class="article-tag-list-item">

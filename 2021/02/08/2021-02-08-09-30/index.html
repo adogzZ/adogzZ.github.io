@@ -8,13 +8,13 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>Redis | adog的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="redis单线程 redis的单线程主要是指redis的网络io和键值对的读写，底层使用的是Linux操作系统的epoll模型，跟nio的单线程模型类似。 redis利用的是操作系统的epoll模型来实现的io多路复用，所以即使单线程也可以处理多并发的客户端连接。  redis执行set命令出现错误1错误提示：MISCONF Redis is configured to save RDB snap">
+  <meta name="description" content="redis单线程 redis的单线程主要是指redis的网络io和键值对的读写，底层使用的是Linux操作系统的epoll模型，跟nio的单线程模型类似。 redis利用的是操作系统的epoll模型来实现的io多路复用，所以即使单线程也可以处理多并发的客户端连接。  redis执行set命令出现错误">
 <meta name="keywords" content="redis">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Redis">
 <meta property="og:url" content="http://yoursite.com/2021/02/08/2021-02-08-09-30/index.html">
 <meta property="og:site_name" content="adog的博客">
-<meta property="og:description" content="redis单线程 redis的单线程主要是指redis的网络io和键值对的读写，底层使用的是Linux操作系统的epoll模型，跟nio的单线程模型类似。 redis利用的是操作系统的epoll模型来实现的io多路复用，所以即使单线程也可以处理多并发的客户端连接。  redis执行set命令出现错误1错误提示：MISCONF Redis is configured to save RDB snap">
+<meta property="og:description" content="redis单线程 redis的单线程主要是指redis的网络io和键值对的读写，底层使用的是Linux操作系统的epoll模型，跟nio的单线程模型类似。 redis利用的是操作系统的epoll模型来实现的io多路复用，所以即使单线程也可以处理多并发的客户端连接。  redis执行set命令出现错误">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="c:/Users/adog/AppData/Roaming/Typora/typora-user-images/1612769383532.png">
 <meta property="og:image" content="https://note.youdao.com/yws/public/resource/893c138fa39925f86b374fd46db322b4/xmlnote/9EFFDA379EF5449590D6FABD49217A22/102679">
@@ -24,10 +24,10 @@
 <meta property="og:image" content="https://note.youdao.com/yws/public/resource/893c138fa39925f86b374fd46db322b4/xmlnote/7D3DDD5D61CC4C66A1C4850C30A7AC34/80634">
 <meta property="og:image" content="https://note.youdao.com/yws/public/resource/218d9ba28237a441217d0e024d410769/xmlnote/634BD113FECA429AAE20B2A22399C06B/101610">
 <meta property="og:image" content="https://note.youdao.com/yws/public/resource/7b6df00d88f1554d79b2d688c23148a2/xmlnote/0E66B6FC979C49A9AE9F2AB4D54C9F64/80946">
-<meta property="og:updated_time" content="2021-02-10T12:07:10.178Z">
+<meta property="og:updated_time" content="2021-02-21T02:03:59.446Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Redis">
-<meta name="twitter:description" content="redis单线程 redis的单线程主要是指redis的网络io和键值对的读写，底层使用的是Linux操作系统的epoll模型，跟nio的单线程模型类似。 redis利用的是操作系统的epoll模型来实现的io多路复用，所以即使单线程也可以处理多并发的客户端连接。  redis执行set命令出现错误1错误提示：MISCONF Redis is configured to save RDB snap">
+<meta name="twitter:description" content="redis单线程 redis的单线程主要是指redis的网络io和键值对的读写，底层使用的是Linux操作系统的epoll模型，跟nio的单线程模型类似。 redis利用的是操作系统的epoll模型来实现的io多路复用，所以即使单线程也可以处理多并发的客户端连接。  redis执行set命令出现错误">
 <meta name="twitter:image" content="c:/Users/adog/AppData/Roaming/Typora/typora-user-images/1612769383532.png">
   
     <link rel="alternative" href="/atom.xml" title="adog的博客" type="application/atom+xml">
@@ -200,7 +200,8 @@ var _hmt = _hmt || [];
 <li>redis的单线程主要是指redis的网络io和键值对的读写，底层使用的是Linux操作系统的epoll模型，跟nio的单线程模型类似。</li>
 <li>redis利用的是操作系统的epoll模型来实现的io多路复用，所以即使单线程也可以处理多并发的客户端连接。</li>
 </ul>
-<h2 id="redis执行set命令出现错误"><a href="#redis执行set命令出现错误" class="headerlink" title="redis执行set命令出现错误"></a>redis执行set命令出现错误</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">错误提示：MISCONF Redis is configured to save RDB snapshots, but it is currently not able to persist on disk. Commands that may modify the data set are disabled, because this instance is configured to report errors during writes if RDB snapshotting fails (stop-writes-on-bgsave-error option). Please check the Redis logs for details about the RDB error.</span><br></pre></td></tr></table></figure>
+<h2 id="redis执行set命令出现错误"><a href="#redis执行set命令出现错误" class="headerlink" title="redis执行set命令出现错误"></a>redis执行set命令出现错误</h2><a id="more"></a>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">错误提示：MISCONF Redis is configured to save RDB snapshots, but it is currently not able to persist on disk. Commands that may modify the data set are disabled, because this instance is configured to report errors during writes if RDB snapshotting fails (stop-writes-on-bgsave-error option). Please check the Redis logs for details about the RDB error.</span><br></pre></td></tr></table></figure>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">解决方案：127.0.0.1:6379&gt; config set stop-writes-on-bgsave-error no</span><br></pre></td></tr></table></figure>
 <h2 id="redis集群架构"><a href="#redis集群架构" class="headerlink" title="redis集群架构"></a>redis集群架构</h2><p><img src="C:\Users\adog\AppData\Roaming\Typora\typora-user-images\1612769383532.png" alt="1612769383532"></p>
 <h2 id="redis持久化"><a href="#redis持久化" class="headerlink" title="redis持久化"></a>redis持久化</h2><ul>
@@ -294,7 +295,7 @@ var _hmt = _hmt || [];
 </ol>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">DELAY = 500ms + random(0 ~ 500ms) + SLAVE_RANK * 1000ms</span><br><span class="line">SLAVE_RANK表示此slave已经从master复制数据的总量的rank。Rank越小代表已复制的数据越新。这种方式下，持有最新数据的slave将会首先发起选举（理论上）。</span><br></pre></td></tr></table></figure>
 <h2 id="redis集群脑裂数据丢失问题"><a href="#redis集群脑裂数据丢失问题" class="headerlink" title="redis集群脑裂数据丢失问题"></a>redis集群脑裂数据丢失问题</h2><p>假如一个集群有三个主节点，每个主节点有2个从节点。脑裂问题是因为，当主节点与从节点断开连接时，集群需要进行重新选举，在重新选举的过程中，客户端很有可能继续往之前的那个主节点写入大量的数据。当选举出新的主节点，而之前的主节点又重新加入到集群成为新的主节点的从节点时，需要从主节点同步数据，而旧的主节点在选举过程中写入的数据就会被覆盖掉，从而导致数据丢失。规避方法：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">min-replicas-to-write 1  //写数据成功最少同步的slave数量，这个数量可以模仿大于半数机制配置，比如集群总共三个节点可以配置1，加上leader就是2，超过了半数。只有超过半数的节点都同步数据成功才会告诉客户端数据同步成功。</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">min-replicas-to-write 1  //写数据成功最少同步的slave数量，这个数量可以模仿大于半数机制配置，比如集群总共三个节点可以配置1，加上leader就是2，超过了半数。只有超过半数的节点都同步数据成功才会告诉客户端数据同步成功。</span><br></pre></td></tr></table></figure>
 <h2 id="多级缓存架构"><a href="#多级缓存架构" class="headerlink" title="多级缓存架构"></a>多级缓存架构</h2><p><img src="https://note.youdao.com/yws/public/resource/7b6df00d88f1554d79b2d688c23148a2/xmlnote/0E66B6FC979C49A9AE9F2AB4D54C9F64/80946" alt="img"></p>
 
       
@@ -545,11 +546,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">zookeeper</a>
+                <a href="javascript:void(0)" class="js-tag color5">Java</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Java</a>
+                <a href="javascript:void(0)" class="js-tag color5">zookeeper</a>
               </li>
              
               <li class="article-tag-list-item">
