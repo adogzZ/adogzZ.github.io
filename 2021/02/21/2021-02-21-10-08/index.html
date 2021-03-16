@@ -6,22 +6,29 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>leetcode_236_二叉树的最近公共祖先 | adog的博客</title>
+  <title>RabbitMQ | adog的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="题目描述：给定一个二叉树, 找到该树中两个指定节点的最近公共祖先。 百度百科中最近公共祖先的定义为：“对于有根树 T 的两个结点 p、q，最近公共祖先表示为一个结点 x，满足 x 是 p、q 的祖先且 x 的深度尽可能大（一个节点也可以是它自己的祖先）。”">
-<meta name="keywords" content="leetcode,leetcode_medium">
+  <meta name="description" content="RabbitMQ基础架构 RabbitMQ的基础组件 Broker：接收和分发消息的应用，RabbitMQ Server就是 Message Broker。 Virtual host：当多个不同的用户使用同一个RabbitMQ server 提供的服务时，可以划分出多个virtual host，每个用户在自己的 virtual host上创建 exchange／queue 等。 Connectio">
+<meta name="keywords" content="rabbitMQ">
 <meta property="og:type" content="article">
-<meta property="og:title" content="leetcode_236_二叉树的最近公共祖先">
-<meta property="og:url" content="http://yoursite.com/2019/09/01/2019-09-01-22-05/index.html">
+<meta property="og:title" content="RabbitMQ">
+<meta property="og:url" content="http://yoursite.com/2021/02/21/2021-02-21-10-08/index.html">
 <meta property="og:site_name" content="adog的博客">
-<meta property="og:description" content="题目描述：给定一个二叉树, 找到该树中两个指定节点的最近公共祖先。 百度百科中最近公共祖先的定义为：“对于有根树 T 的两个结点 p、q，最近公共祖先表示为一个结点 x，满足 x 是 p、q 的祖先且 x 的深度尽可能大（一个节点也可以是它自己的祖先）。”">
+<meta property="og:description" content="RabbitMQ基础架构 RabbitMQ的基础组件 Broker：接收和分发消息的应用，RabbitMQ Server就是 Message Broker。 Virtual host：当多个不同的用户使用同一个RabbitMQ server 提供的服务时，可以划分出多个virtual host，每个用户在自己的 virtual host上创建 exchange／queue 等。 Connectio">
 <meta property="og:locale" content="default">
-<meta property="og:image" content="https://raw.githubusercontent.com/adogzZ/adogzZ.github.io/master/photos/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/binarytree.png">
-<meta property="og:updated_time" content="2019-09-02T01:51:44.413Z">
+<meta property="og:image" content="c:/Users/adog/AppData/Roaming/Typora/typora-user-images/1613873411987.png">
+<meta property="og:image" content="https://www.rabbitmq.com/img/tutorials/python-one.png">
+<meta property="og:image" content="https://www.rabbitmq.com/img/tutorials/python-two.png">
+<meta property="og:image" content="https://www.rabbitmq.com/img/tutorials/python-three.png">
+<meta property="og:image" content="https://www.rabbitmq.com/img/tutorials/python-four.png">
+<meta property="og:image" content="https://www.rabbitmq.com/img/tutorials/python-five.png">
+<meta property="og:image" content="c:/Users/adog/AppData/Roaming/Typora/typora-user-images/1613911041618.png">
+<meta property="og:image" content="c:/Users/adog/AppData/Roaming/Typora/typora-user-images/1613958961634.png">
+<meta property="og:updated_time" content="2021-02-22T01:57:42.558Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="leetcode_236_二叉树的最近公共祖先">
-<meta name="twitter:description" content="题目描述：给定一个二叉树, 找到该树中两个指定节点的最近公共祖先。 百度百科中最近公共祖先的定义为：“对于有根树 T 的两个结点 p、q，最近公共祖先表示为一个结点 x，满足 x 是 p、q 的祖先且 x 的深度尽可能大（一个节点也可以是它自己的祖先）。”">
-<meta name="twitter:image" content="https://raw.githubusercontent.com/adogzZ/adogzZ.github.io/master/photos/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/binarytree.png">
+<meta name="twitter:title" content="RabbitMQ">
+<meta name="twitter:description" content="RabbitMQ基础架构 RabbitMQ的基础组件 Broker：接收和分发消息的应用，RabbitMQ Server就是 Message Broker。 Virtual host：当多个不同的用户使用同一个RabbitMQ server 提供的服务时，可以划分出多个virtual host，每个用户在自己的 virtual host上创建 exchange／queue 等。 Connectio">
+<meta name="twitter:image" content="c:/Users/adog/AppData/Roaming/Typora/typora-user-images/1613873411987.png">
   
     <link rel="alternative" href="/atom.xml" title="adog的博客" type="application/atom+xml">
   
@@ -169,35 +176,116 @@ var _hmt = _hmt || [];
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-2019-09-01-22-05" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-2021-02-21-10-08" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      leetcode_236_二叉树的最近公共祖先
+      RabbitMQ
     </h1>
   
 
         
-        <a href="/2019/09/01/2019-09-01-22-05/" class="archive-article-date">
-  	<time datetime="2019-09-01T14:06:04.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-09-01</time>
+        <a href="/2021/02/21/2021-02-21-10-08/" class="archive-article-date">
+  	<time datetime="2021-02-21T02:08:23.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-02-21</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="题目描述："><a href="#题目描述：" class="headerlink" title="题目描述："></a>题目描述：</h3><p>给定一个二叉树, 找到该树中两个指定节点的最近公共祖先。</p>
-<p>百度百科中最近公共祖先的定义为：“对于有根树 T 的两个结点 p、q，最近公共祖先表示为一个结点 x，满足 x 是 p、q 的祖先且 x 的深度尽可能大（一个节点也可以是它自己的祖先）。”</p>
-<p><img src="https://raw.githubusercontent.com/adogzZ/adogzZ.github.io/master/photos/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/binarytree.png" alt="binarytree"></p>
-<a id="more"></a>
-<h3 id="示例："><a href="#示例：" class="headerlink" title="示例："></a>示例：</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">输入: root = [3,5,1,6,2,0,8,null,null,7,4], p = 5, q = 1</span><br><span class="line">输出: 3</span><br></pre></td></tr></table></figure>
-<p>说明：<br><code>所有节点的值都是唯一的。</code><br><code>p、q 为不同节点且均存在于给定的二叉树中。</code></p>
-<h3 id="思路："><a href="#思路：" class="headerlink" title="思路："></a>思路：</h3><p>记录从根节点到两个指定节点的路径，返回最后出现的相同节点</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">    </span><br><span class="line">    //表示是否已经找到了节点</span><br><span class="line">    int finish = 0;</span><br><span class="line">    </span><br><span class="line">    public TreeNode lowestCommonAncestor(TreeNode root,TreeNode p,TreeNode q)&#123;</span><br><span class="line">        TreeNode result = root;</span><br><span class="line">        int i = 0;</span><br><span class="line">        List&lt;TreeNode&gt; p_path = new ArrayList&lt;&gt;();</span><br><span class="line">        List&lt;TreeNode&gt; q_path = new ArrayList&lt;&gt;();</span><br><span class="line">        preOrder(root,p,p_path);</span><br><span class="line">        finish = 0;</span><br><span class="line">        preOrder(root,q,q_path);</span><br><span class="line">        while(i &lt; p_path.size() &amp;&amp; i &lt; q_path.size())&#123;</span><br><span class="line">            if(p_path.get(i) == q_path.get(i))&#123;</span><br><span class="line">                result = p_path.get(i);</span><br><span class="line">            &#125;</span><br><span class="line">            i ++;</span><br><span class="line">        &#125;</span><br><span class="line">        return result;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    public void preOrder(TreeNode node,TreeNode search,List&lt;TreeNode&gt; path)&#123;</span><br><span class="line">        if(node == null || finish == 1)&#123;</span><br><span class="line">            return;</span><br><span class="line">        &#125;</span><br><span class="line">        path.add(node);</span><br><span class="line">        if(node.val == search.val)&#123;</span><br><span class="line">            finish = 1;</span><br><span class="line">        &#125;</span><br><span class="line">        preOrder(node.left,search,path);</span><br><span class="line">        preOrder(node.right,search,path);</span><br><span class="line">        //如果找到了,回溯的时候就不需要回到上一个状态了</span><br><span class="line">        if(finish == 0)&#123;</span><br><span class="line">            path.remove(path.size() - 1);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><code>执行用时 :22 ms, 在所有 Java 提交中击败了17.56%的用户</code><br><code>内存消耗 :38.8 MB, 在所有 Java 提交中击败了9.53%的用户</code></p>
+        <h2 id="RabbitMQ基础架构"><a href="#RabbitMQ基础架构" class="headerlink" title="RabbitMQ基础架构"></a>RabbitMQ基础架构</h2><p><img src="C:\Users\adog\AppData\Roaming\Typora\typora-user-images\1613873411987.png" alt="1613873411987"></p>
+<h2 id="RabbitMQ的基础组件"><a href="#RabbitMQ的基础组件" class="headerlink" title="RabbitMQ的基础组件"></a>RabbitMQ的基础组件</h2><ul>
+<li>Broker：接收和分发消息的应用，RabbitMQ Server就是 Message Broker。</li>
+<li>Virtual host：当多个不同的用户使用同一个<br>RabbitMQ server 提供的服务时，可以划分出多个virtual host，每个用户在自己的 virtual host上创建 exchange／queue 等。</li>
+<li>Connection：publisher／consumer 和 broker 之间的 TCP 连接。</li>
+<li>Channel：Connection内部建立的逻辑连接。</li>
+<li>Exchange：负责消息的分发，根据分发规则将不同的消息分发到不同的队列queue中去。</li>
+<li>Queue：消息最终被送到这里等待 consumer 取走。</li>
+<li>Binding：exchange 和 queue 之间的虚拟连接，binding 中可以包含 routing<br>key。Binding 信息被保存到 exchange 中的查询列表中，用于 message 的分发依据。</li>
+</ul>
+<h2 id="RabbitMQ的工作模式"><a href="#RabbitMQ的工作模式" class="headerlink" title="RabbitMQ的工作模式"></a>RabbitMQ的工作模式</h2><ol>
+<li>简单模式</li>
+</ol>
+<p><img src="https://www.rabbitmq.com/img/tutorials/python-one.png" alt="img"></p>
+<ol start="2">
+<li>工作队列模式</li>
+</ol>
+<p><img src="https://www.rabbitmq.com/img/tutorials/python-two.png" alt="img"></p>
+<ol start="3">
+<li>发布订阅模式</li>
+</ol>
+<p><img src="https://www.rabbitmq.com/img/tutorials/python-three.png" alt="img"></p>
+<ol start="4">
+<li>路由模式</li>
+</ol>
+<p><img src="https://www.rabbitmq.com/img/tutorials/python-four.png" alt="img"></p>
+<ol start="5">
+<li>Topics通配符模式</li>
+</ol>
+<p><img src="https://www.rabbitmq.com/img/tutorials/python-five.png" alt="img"></p>
+<h2 id="Exchange通常有以下3种类型"><a href="#Exchange通常有以下3种类型" class="headerlink" title="Exchange通常有以下3种类型"></a>Exchange通常有以下3种类型</h2><ol>
+<li>Fanout：广播，将消息交给所有绑定到交换机的队列。</li>
+<li>Direct：定向，把消息交给符合指定routing key 的队列。</li>
+<li>Topic：通配符，把消息交给符合routing pattern 的队列。</li>
+</ol>
+<p><strong>Exchange</strong>（交换机）只负责转发消息，不具备存储消息的能力，因此如果没有任何队列与<br>Exchange 绑定，或者没有符合路由规则的队列，那么消息会丢失！</p>
+<p><strong>Routingkey</strong> 一般都是有一个或多个单词组成，多个单词之间以”.”分割，例如： item.insert 。</p>
+<p><strong>通配符规则</strong>：# 匹配一个或多个词，<em> 匹配不多不少恰好1个词，例如：item.# 能够匹配 item.insert.abc 或者 item.insert，item.</em> 只能匹配 item.insert。</p>
+<h2 id="RabbitMQ的消息确认机制"><a href="#RabbitMQ的消息确认机制" class="headerlink" title="RabbitMQ的消息确认机制"></a>RabbitMQ的消息确认机制</h2><p>RabbitMQ提供了监听器来接收消息投递的状态，生产者端的消息确认涉及两种状态：Confirm和Return。</p>
+<ul>
+<li><p>Confirm：代表生产者将消息送到Broker时产生的状态</p>
+<ul>
+<li>ack：代表Broker已经将数据接收</li>
+<li>nack：代表Broker拒收消息。原因：队列已满，限流，io异常等</li>
+</ul>
+</li>
+<li><p>Return：代表消息被Broker正常接收后，没有对应的队列进行投递时产生的状态，消息被退回给生产者。</p>
+</li>
+</ul>
+<h2 id="RabbitMQ高级特性"><a href="#RabbitMQ高级特性" class="headerlink" title="RabbitMQ高级特性"></a>RabbitMQ高级特性</h2><ol>
+<li><p>消息的可靠性投递</p>
+<ul>
+<li>Confirm 确认模式</li>
+<li>Return 退回模式</li>
+</ul>
+</li>
+<li><p>Consumer Ack：消费端收到消息后的确认方式</p>
+<ul>
+<li>自动确认：acknowledge=”none”，消息一旦被Consumer接收到，则自动确认收到，并将相应<br>message 从 RabbitMQ 的消息缓存中移除。但是在实际业务处理中，很可能消息接收到，业务处理出现异常，那么该消息就会丢失。</li>
+<li>手动确认：acknowledge=”manual”，需要在业务处理成功后，调用channel.basicAck()，手动签收，如果出现异常，则调用channel.basicNack()方法，让其自动重新发送消息。</li>
+<li>根据异常情况确认：acknowledge=”auto”，（这种方式使用麻烦，不作讲解）</li>
+</ul>
+</li>
+<li><p>消费端限流</p>
+<ul>
+<li>在&lt;rabbit: listener-container&gt; 中配置 prefetch属性设置消费端一次拉取多少消息。</li>
+<li>消费端确认模式为手动模式，acknowledge=”manual”。</li>
+</ul>
+</li>
+<li><p>TTL</p>
+<ul>
+<li>RabbitMQ可以对消息设置过期时间，也可以对整个队列设置过期时间。</li>
+</ul>
+</li>
+<li><p>死信队列，英文缩写：DLX<br>。Dead<br>Letter Exchange（死信交换机），当消息成为Dead<br>message后，可以被重新发送到另一个交换机，这个交换机就是DLX。</p>
+<ul>
+<li>消息成为死信的三种情况：<ul>
+<li>队列消息长度到达限制；</li>
+<li>消费者拒绝消费消息，basicNack/basicReject,并且不把消息重新放入原目标队列,requeue=false；</li>
+<li>原队列存在消息过期设置，消息到达超时时间未被消费；</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<p><img src="C:\Users\adog\AppData\Roaming\Typora\typora-user-images\1613911041618.png" alt="1613911041618"></p>
+<ol start="6">
+<li>延迟队列，消息进入队列后不会立即被消费，只有到达指定时间后，才会被消费。在RabbitMQ中使用TTL + 死信队列实现延迟队列的效果。</li>
+</ol>
+<p><img src="C:\Users\adog\AppData\Roaming\Typora\typora-user-images\1613958961634.png" alt="1613958961634"></p>
 
       
 
@@ -211,11 +299,7 @@ var _hmt = _hmt || [];
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">leetcode</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">leetcode_medium</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">rabbitMQ</a>
         		</li>
       		
 		</ul>
@@ -271,7 +355,7 @@ var _hmt = _hmt || [];
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2019/09/01/2019-09-01-22-05/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2021/02/21/2021-02-21-10-08/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -285,18 +369,9 @@ var _hmt = _hmt || [];
   
 <nav id="article-nav">
   
-    <a href="/2019/09/02/2019-09-02-13-09/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          leetcode_207_课程表
-        
-      </div>
-    </a>
   
-  
-    <a href="/2019/08/31/2019-08-31_21_19/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">leetcode_165_比较版本号</div>
+    <a href="/2021/02/11/2021-02-11-10-18/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Zookeeper</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -335,7 +410,7 @@ var _hmt = _hmt || [];
 <script src="https://jjeejj.github.io/js/gitment.js"></script>
 <script>
 var gitment = new Gitment({
-  id: "http://yoursite.com/2019/09/01/2019-09-01-22-05/",
+  id: "http://yoursite.com/2021/02/21/2021-02-21-10-08/",
   owner: 'adogzZ',
   repo: 'adogzZ.github.io',
   oauth: {
